@@ -30,7 +30,7 @@ int main(void) {
 
     // display_SAL(mySAL);
 
-    // dynamic array list v1 --------------
+    // dynamic array list -----------------
     PersonDynamicArrayList myDAL;
     init_DAL(&myDAL);
 
@@ -51,17 +51,30 @@ int main(void) {
 
     // display_DAL(myDAL);
 
-    // Cursor Based List ----------------
+    // Singly Linked List ----------------
+
+    // void insert_first_LL(PersonLinkedList *list, Person p);
+    // void insert_last_LL(PersonLinkedList *list, Person p);
+    // void insert_after_LL(PersonLinkedList *list, Person p, String name);
+
+    // void delete_first_LL(PersonLinkedList *list);
+    // void delete_last_LL(PersonLinkedList *list);
+    // void delete_by_city_LL(PersonLinkedList *list, String city);
+
+    // void display_LL(PersonLinkedList list);
+
+    // Cursor Based List -----------------
 
     // void init_vspace(VSpace *vs);
-    // Position alloc_space(VSpace *vs);
-    // void free_space(VSpace *vs, Position index);
+
     // void insert_first_CBL(VSpace *vs, PersonCusorBasedList *list, Person p);
     // void insert_last_CBL(VSpace *vs, PersonCusorBasedList *list, Person p);
     // void insert_at_CBL(VSpace *vs, PersonCusorBasedList *list, Person p, int index);
+
     // void delete_first_CBL(VSpace *vs, PersonCusorBasedList *list);
     // void delete_last_CBL(VSpace *vs, PersonCusorBasedList *list);
-    // void delete_by_sex_CBL(VSpace *vs, PersonCusorBasedList *list, char sex); // all ocurrences
+    // void delete_by_sex_CBL(VSpace *vs, PersonCusorBasedList *list, char sex);
+
     // void display_CBL(VSpace vs, PersonCusorBasedList list);
 
     return 0;
