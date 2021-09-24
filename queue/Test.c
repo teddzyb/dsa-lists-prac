@@ -53,15 +53,19 @@ int main(void) {
 
     // Singly Linked List ----------------
 
-    // void insert_first_LL(PersonLinkedList *list, Person p);
-    // void insert_last_LL(PersonLinkedList *list, Person p);
-    // void insert_after_LL(PersonLinkedList *list, Person p, String name);
+    PersonLinkedList myLL = NULL;
 
-    // void delete_first_LL(PersonLinkedList *list);
-    // void delete_last_LL(PersonLinkedList *list);
-    // void delete_by_city_LL(PersonLinkedList *list, String city);
+    insert_first_LL(&myLL, p1);
+    insert_first_LL(&myLL, p2);
+    insert_last_LL(&myLL, p3);
+    insert_last_LL(&myLL, p4);
+    insert_after_LL(&myLL, p5, "France");
 
-    // void display_LL(PersonLinkedList list);
+    delete_first_LL(&myLL);
+    delete_last_LL(&myLL);
+    delete_by_city_LL(&myLL, "Tagb");
+
+    // display_LL(myLL);
 
     // Cursor Based List -----------------
 

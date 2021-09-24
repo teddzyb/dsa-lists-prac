@@ -13,7 +13,7 @@ Person createPerson(String name, char sex, String city) {
 }
 
 void displayPersonInfo(Person p) {
-    printf("{%s | %c | %s}", p.name, p.sex, p.city);
+    printf("{%s | %c | %s}\n", p.name, p.sex, p.city);
 }
 
 
@@ -80,7 +80,7 @@ void delete_by_sex_SAL(PersonStaticArrayList *list, char sex){ // all ocurrences
 void display_SAL(PersonStaticArrayList list){
     int i;
     for (i = 0; i < list.count; i++) {
-        printf("%s | %c | %s\n", list.data[i].name, list.data[i].sex, list.data[i].city);
+        displayPersonInfo(list.data[i]);
     }
 }
 
@@ -159,7 +159,7 @@ void delete_by_city_DAL(PersonDynamicArrayList *list, String city){ // first ocu
 void display_DAL(PersonDynamicArrayList list){
     int i;
     for (i = 0; i < list.count; i++) {
-        printf("%s | %c | %s\n", list.data[i].name, list.data[i].sex, list.data[i].city);
+        displayPersonInfo(list.data[i]);
     }
 }
 
@@ -239,20 +239,80 @@ void delete_by_name_DAL_2(PersonDynamicArrayList *list, String name){ // last oc
 void display_DAL_2(PersonDynamicArrayList list){
     int i;
     for (i = 0; i < list.count; i++) {
-        printf("%s | %c | %s\n", list.data[i].name, list.data[i].sex, list.data[i].city);
+        displayPersonInfo(list.data[i]);
     }    
 }
 
-
 /* Singly Linked List */
 
-// void insert_first_LL(PersonLinkedList *list, Person p);
-// void insert_last_LL(PersonLinkedList *list, Person p);
-// void insert_after_LL(PersonLinkedList *list, Person p, String name);
-// void delete_first_LL(PersonLinkedList *list);
-// void delete_last_LL(PersonLinkedList *list);
-// void delete_by_city_LL(PersonLinkedList *list, String city); // all ocurrences
-// void display_LL(PersonLinkedList list);
+void insert_first_LL(PersonLinkedList *list, Person p){
+    PersonLinkedList temp = (PersonLinkedList) malloc(sizeof(PersonNode));
+    if (temp != NULL) {
+        temp->elem = p;
+        temp->next = *list;
+        *list = temp;
+    }
+}
+
+void insert_last_LL(PersonLinkedList *list, Person p){
+    PersonLinkedList *current;
+    PersonLinkedList temp = (PersonLinkedList) malloc(sizeof(PersonNode));
+    if (temp != NULL) {
+        for (current = list; *current != NULL; current = &(*current)->next) {}
+        temp->elem = p;
+        temp->next = NULL;
+        *current = temp;
+    }
+}
+
+void insert_after_LL(PersonLinkedList *list, Person p, String name){
+    PersonLinkedList *current;
+    PersonLinkedList temp = (PersonLinkedList) malloc(sizeof(PersonNode));
+    if (temp != NULL) {
+        for (current = list; *current != NULL && strcmp((*current)->elem.name, name) != 0; current = &(*current)->next) {}
+        temp->elem = p;
+        temp->next = (*current)->next;
+        (*current)->next = temp;
+    }
+}
+
+void delete_first_LL(PersonLinkedList *list){
+    if (*list != NULL) {
+        PersonLinkedList temp = *list;
+        *list = (*list)->next;
+        free(temp);
+        temp = NULL;
+    }
+}
+
+void delete_last_LL(PersonLinkedList *list){
+    if (*list != NULL) {
+        PersonLinkedList *current;
+        for (current = list; (*current)->next != NULL; current = &(*current)->next) {}
+        free(*current);
+        *current = NULL;
+    }
+}
+
+void delete_by_city_LL(PersonLinkedList *list, String city){ // all ocurrences
+    if (*list != NULL) {
+        PersonLinkedList *current, temp;
+        for (current = list; *current != NULL; current = &(*current)->next) {
+            if (strcmp((*current)->elem.city, city) == 0) {
+                temp = *current;
+                *current = temp->next;
+                free(temp);
+            }
+        }
+    }
+}
+
+void display_LL(PersonLinkedList list){
+    PersonLinkedList current;
+    for (current = list; current != NULL; current = current->next) {
+        displayPersonInfo(current->elem);
+    }
+}
 
 
 /* Cusor Based List*/
