@@ -243,6 +243,7 @@ void display_DAL_2(PersonDynamicArrayList list){
     }    
 }
 
+
 /* Singly Linked List */
 
 void insert_first_LL(PersonLinkedList *list, Person p){
@@ -317,13 +318,62 @@ void display_LL(PersonLinkedList list){
 
 /* Cusor Based List*/
 
-// void init_vspace(VSpace *vs);
-// Position alloc_space(VSpace *vs);
-// void free_space(VSpace *vs, Position index);
-// void insert_first_CBL(VSpace *vs, PersonCusorBasedList *list, Person p);
-// void insert_last_CBL(VSpace *vs, PersonCusorBasedList *list, Person p);
-// void insert_at_CBL(VSpace *vs, PersonCusorBasedList *list, Person p, int index);
+void init_vspace(VSpace *vs){
+    int i;
+    for (i = MAX_VSPACE - 1; i >= 0; i--) {
+        vs->data[i].next = i - 1;
+    }
+    vs->avail = MAX_VSPACE - 1;
+}
+
+Position alloc_space(VSpace *vs){
+    Position ret = -1;
+    if (vs->avail != -1) {
+        ret = vs->avail;
+        vs->avail = vs->data[vs->avail].next;
+    }
+    return ret;
+}
+
+void free_space(VSpace *vs, Position index){
+    vs->data[index].next = vs->avail;
+    vs->avail = index;
+}
+
+void insert_first_CBL(VSpace *vs, PersonCusorBasedList *list, Person p){
+    Position temp = alloc_space(vs);
+    if (temp != -1) {
+        vs->data[temp].elem = p;
+        vs->data[temp].next = *list;
+        *list = temp;
+    }
+}
+
+void insert_last_CBL(VSpace *vs, PersonCusorBasedList *list, Person p){
+    Position *current, temp = alloc_space(vs);
+    if (temp != -1) {
+        for (current = list; *current != -1; current = &(vs->data[*current].next)) {}
+        vs->data[temp].elem = p;
+        vs->data[temp].next = *current;
+        *current = temp;
+    }
+}
+
+void insert_at_CBL(VSpace *vs, PersonCusorBasedList *list, Person p, int index){
+    Position *current, temp = alloc_space(vs);
+    if (temp != -1) {
+        for (current = list; *current != -1 && *current != index; current = &(vs->data[*current].next)) {}
+        // unfinished
+    }
+}
+
 // void delete_first_CBL(VSpace *vs, PersonCusorBasedList *list);
 // void delete_last_CBL(VSpace *vs, PersonCusorBasedList *list);
 // void delete_by_sex_CBL(VSpace *vs, PersonCusorBasedList *list, char sex); // all ocurrences
-// void display_CBL(VSpace vs, PersonCusorBasedList list);
+
+void display_CBL(VSpace vs, PersonCusorBasedList list){
+    int i;
+    for (i = list; i != -1; i = vs.data[i].next) {
+        displayPersonInfo(vs.data[i].elem);
+    }
+}

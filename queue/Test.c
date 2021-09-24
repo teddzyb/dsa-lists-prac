@@ -69,17 +69,27 @@ int main(void) {
 
     // Cursor Based List -----------------
 
-    // void init_vspace(VSpace *vs);
+    VSpace mySpace;
+    PersonCusorBasedList myCB = -1;
+    init_vspace(&mySpace);
 
-    // void insert_first_CBL(VSpace *vs, PersonCusorBasedList *list, Person p);
-    // void insert_last_CBL(VSpace *vs, PersonCusorBasedList *list, Person p);
-    // void insert_at_CBL(VSpace *vs, PersonCusorBasedList *list, Person p, int index);
+    insert_first_CBL(&mySpace, &myCB, p1);
+    insert_first_CBL(&mySpace, &myCB, p2);
+    insert_last_CBL(&mySpace, &myCB, p3);
+    insert_last_CBL(&mySpace, &myCB, p4);
+    // insert_at_CBL(&mySpace, &myCB, p5, 2);
 
     // void delete_first_CBL(VSpace *vs, PersonCusorBasedList *list);
     // void delete_last_CBL(VSpace *vs, PersonCusorBasedList *list);
     // void delete_by_sex_CBL(VSpace *vs, PersonCusorBasedList *list, char sex);
 
-    // void display_CBL(VSpace vs, PersonCusorBasedList list);
+    display_CBL(mySpace, myCB);
+
+    // Circular Array Queue --------------
+
+    // int get_queue_length(CircularArrayQueue list);
+    // PersonLinkedList get_all_females(CircularArrayQueue list);
+    // PersonDynamicArrayList remove_all_males(CircularArrayQueue *list);
 
     return 0;
 }
