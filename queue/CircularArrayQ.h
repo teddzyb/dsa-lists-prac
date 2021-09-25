@@ -2,7 +2,7 @@
 #define CIRCULARARRAYQ_H
 
 #include <stdbool.h>
-#include "Person.c"
+#include "Person.h"
 #define MAX 10
 
 typedef Person Type;

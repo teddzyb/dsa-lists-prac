@@ -83,13 +83,20 @@ int main(void) {
     delete_last_CBL(&mySpace, &myCB);
     // delete_by_sex_CBL(&mySpace, &myCB, 'F');
 
-    display_CBL(mySpace, myCB);
+    // display_CBL(mySpace, myCB);
 
     // Circular Array Queue --------------
 
-    // int get_queue_length(CircularArrayQueue list);
-    // PersonLinkedList get_all_females(CircularArrayQueue list);
-    // PersonDynamicArrayList remove_all_males(CircularArrayQueue *list);
+    CircularArrayQueue myCAQ = create_array_queue();
+    init_array_queue(&myCAQ);
+
+    enqueue(&myCAQ, p1);
+    enqueue(&myCAQ, p2);
+    enqueue(&myCAQ, p3);
+
+    // printf("\n%d", get_queue_length(myCAQ));
+    // PersonLinkedList femaleLL = get_all_females(myCAQ);
+    // PersonDynamicArrayList maleDAM = remove_all_males(&myCAQ);
 
     return 0;
 }

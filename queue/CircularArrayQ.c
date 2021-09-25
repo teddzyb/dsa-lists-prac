@@ -4,6 +4,8 @@
 
 CircularArrayQueue create_array_queue(){
     CircularArrayQueue caq;
+    caq.front = -1;
+    caq.rear = -1;
     return caq;
 }
 
