@@ -79,9 +79,9 @@ int main(void) {
     insert_last_CBL(&mySpace, &myCB, p4);
     // insert_at_CBL(&mySpace, &myCB, p5, 2);
 
-    // void delete_first_CBL(VSpace *vs, PersonCusorBasedList *list);
-    // void delete_last_CBL(VSpace *vs, PersonCusorBasedList *list);
-    // void delete_by_sex_CBL(VSpace *vs, PersonCusorBasedList *list, char sex);
+    delete_first_CBL(&mySpace, &myCB);
+    delete_last_CBL(&mySpace, &myCB);
+    // delete_by_sex_CBL(&mySpace, &myCB, 'F');
 
     display_CBL(mySpace, myCB);
 

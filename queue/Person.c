@@ -367,9 +367,37 @@ void insert_at_CBL(VSpace *vs, PersonCusorBasedList *list, Person p, int index){
     }
 }
 
-// void delete_first_CBL(VSpace *vs, PersonCusorBasedList *list);
-// void delete_last_CBL(VSpace *vs, PersonCusorBasedList *list);
-// void delete_by_sex_CBL(VSpace *vs, PersonCusorBasedList *list, char sex); // all ocurrences
+void delete_first_CBL(VSpace *vs, PersonCusorBasedList *list){
+    if (*list != -1) {
+        Position temp = *list;
+        *list = vs->data[*list].next;
+        free_space(vs, temp);
+    }
+}
+
+void delete_last_CBL(VSpace *vs, PersonCusorBasedList *list){
+    if (*list != -1) {
+        Position *current;
+        for (current = list; vs->data[*current].next != -1; current = &(vs->data[*current].next)) {}
+        free_space(vs, *current);
+        *current = -1;
+    }    
+}
+
+void delete_by_sex_CBL(VSpace *vs, PersonCusorBasedList *list, char sex){ // all ocurrences
+    if (*list != -1) {
+        Position *current = list, temp;
+        while (*current != -1) {
+            if (vs->data[*current].elem.sex == sex) {
+                temp = *current;
+                current = &(vs->data[*current].next);
+                free_space(vs, *current);
+            } else {
+                current = &(vs->data[*current].next);
+            }
+        }
+    }
+} // not working
 
 void display_CBL(VSpace vs, PersonCusorBasedList list){
     int i;
