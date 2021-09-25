@@ -397,7 +397,7 @@ void delete_by_sex_CBL(VSpace *vs, PersonCusorBasedList *list, char sex){ // all
             }
         }
     }
-} // not working
+} // not working properly
 
 void display_CBL(VSpace vs, PersonCusorBasedList list){
     int i;
